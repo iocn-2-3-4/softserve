@@ -74,9 +74,6 @@ class Designer(Employee):
 
 class Manager(Employee):
     def __init__(self, first_name, second_name, salary, experience, team = []):
-        """
-        :type team: list if Developers or Designers
-        """
         self.team = team
         super(Manager, self).__init__(first_name, second_name, salary, experience)
 
