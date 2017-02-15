@@ -93,5 +93,3 @@ class TestLinkedList(unittest.TestCase):
 
         self.list.delete("test2")
         self.list.delete("Cid")
-
-# self.assertTrue(self.list.head.next_node.get_data() == "test")
