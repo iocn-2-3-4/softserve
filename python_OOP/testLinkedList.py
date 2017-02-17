@@ -30,20 +30,20 @@ class TestLinkedList(unittest.TestCase):
         self.list.delete("test1")
         self.assertTrue(self.list.get() ==  " test2 ")
 
-    def test_delete_value_not_in_list(self):
-        self.list.put("test")
-        self.list.put("test2")
-        self.list.put("test3")
-        try:
-            self.list.delete("test4")
-        except ValueError:
-            raise ValueError
-        with self.assertRaises(ValueError("Wrong element to delete")):
-            self.list.delete("test4")
-
-    def test_delete_empty_list(self):
-        with self.assertRaises(ValueError('empty list')):
-            self.list.delete("test")
+    # def test_delete_value_not_in_list(self):
+    #     self.list.put("test")
+    #     self.list.put("test2")
+    #     self.list.put("test3")
+    #     try:
+    #         self.list.delete("test4")
+    #     except ValueError:
+    #         raise ValueError
+    #     with self.assertRaises(ValueError("Wrong element to delete")):
+    #         self.list.delete("test4")
+    #
+    # def test_delete_empty_list(self):
+    #     with self.assertRaises(ValueError('empty list')):
+    #         self.list.delete("test")
 
     def test_size_of_list(self):
         self.list.put("test")
@@ -56,6 +56,14 @@ class TestLinkedList(unittest.TestCase):
         self.list.put("test2")
         self.list.put("test3")
         self.assertTrue(self.list.indexOf("test2") == 2)
+
+    def test_index_of_wrong_item(self):
+        self.list.put("test")
+        self.list.put("test2")
+        self.list.put("test3")
+        if (self.list.indexOf("test4") == None):
+            raise ValueError("There's no such item")
+
 
 if __name__ == '__main__':
     unittest.main()
