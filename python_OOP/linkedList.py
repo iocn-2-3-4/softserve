@@ -10,16 +10,26 @@ class linkedList(object):
     head = None
     tail = None
  
+    # def get(self):
+    #     current_node = self.head
+    #     while current_node is not None:
+    #         return current_node.data,
+    #         current_node = current_node.next
+    #     # print None
+
     def get(self):
-        print "geting list data:"
+        s = " "
         current_node = self.head
-        while current_node is not None:
-            print current_node.data, " -> ",
-            current_node = current_node.next
-        print None
+        if current_node != None:
+            while current_node.next != None:
+                s += str(current_node.data) + " "
+                current_node = current_node.next
+            s += str(current_node.data) + " "
+        return s
  
     def put(self, data):
         node = Node(data, None)
+        # node = Node(data)
         if self.head is None:
             self.head = self.tail = node
         else:
@@ -66,19 +76,19 @@ class linkedList(object):
         return index
         
         
- 
-s = linkedList()
-s.put(8)
-s.put(2)
-s.put(89)
-s.put(111)
-s.size()
-print " "
-s.indexOf(111)
-print " "
-s.get()
-s.delete(2)
-print " "
-s.get()
-print " "
-s.size()
+
+# s = linkedList()
+# s.put("test1")
+# s.put("test2")
+# s.put(89)
+# s.put(111)
+# s.size()
+# print " "
+# s.indexOf(111)
+# print " "
+# print s.get()
+# s.delete(2)
+# print " "
+# print s.get()
+# print " "
+# s.size()
