@@ -4,6 +4,7 @@ class Employee(object):
         self.second_name = second_name
         self.salary = salary
         self.experience = experience
+        amount_salary = salary
         first_name = 0
         second_name = 0
         salary = 500
@@ -12,12 +13,28 @@ class Employee(object):
     def __repr__(self):
         return "{} {}, experience: {},".format(self.first_name, self.second_name, self.experience)
 
+    # def get_bonus(self):
+    #     if 2 < self.experience <= 5:
+    #         self.salary += 200
+    #         return self.salary
+    #     elif self.experience > 5:
+    #         self.salary = self.salary * 1.2 + 500
+    #     return self.salary
+
+    def bonus(self):
+        amount_salary = self.salary
+        if self.experience > 5:
+            return amount_salary * 1.2 + 500
+        elif self.experience > 2:
+            return  amount_salary + 200
+
     # def give_salary(salary):
     #     print salary
     #     return salary
 
     def current_salary(self):
-        return self.salary
+        a = self.bonus()
+        return a
 
 class Developer(Employee):
     def __init__(self, manager, *args):
@@ -34,29 +51,18 @@ class Designer(Employee):
         super(Designer, self).__init__(*args)
 
     def current_salary(self):
-        return self.salary * self.eff_coeff
+        return self.bonus() * self.eff_coeff
 
     def __repr__(self):
         return "{} {}, manager: {}, experience: {},".format(self.first_name, self.second_name, self.manager, self.experience)
 
 class Manager(Employee):
-    # stuff
-    # stuff["d", "d", "d", "d", "dev"]
     def __init__(self, stuff, first_name, second_name, salary, experience):
         self.first_name = first_name
         self.second_name = second_name
         self.salary = salary
         self.experience = experience
-        # self.stuff = stuff["d","d","d","d","dev"]
         self.stuff = stuff
-        # self.stuff = stuff[a,s,d,f,gh,h]
-        # self.stuff = tuple(stuff)
-        # stuff = []
-        # super(Developer, self).__init__(*args)
-
-    def get_stuff(self):
-        stuff = self.stuff
-        return stuff
 
     def current_salary(self):
         dev = 0
@@ -75,19 +81,21 @@ class Manager(Employee):
 
 
 
-
-d = Developer("manager", "name", "second name", 1500, 4)
+#
+# d = Developer("manager", "name", "second name", 1500, 7)
+# # print
+# # d.give_salary()
+# # print d.current_salary()
 # print d
-# d.give_salary()
 # print d.current_salary()
-print d
-m = Developer("manager2", "name", "second name", 500, 4)
+# print d.bonus()
+# m = Developer("manager2", "name", "second name", 500, 4)
 # print m
-des = Designer(0.9, "manager", "name", "second name", 1500, 4)
-# print des.current_salary()
-print des
+des = Designer(0.9, "manager3", "name", "second name", 1500, 6)
 
-mgr = Manager(["s","d","2","4","5","f","d","d","d","d","d","d"], "name", "second name", 1500, 7)
-print mgr
-print mgr.get_stuff()
-print mgr.current_salary()
+print des.current_salary()
+print des.bonus()
+#
+# mgr = Manager(["s","d","2","4","5","f","d","d","d","d","d","d"], "name", "second name", 1500, 7)
+# print mgr.current_salary()
+# print mgr.bonus()
