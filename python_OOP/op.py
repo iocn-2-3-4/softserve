@@ -33,8 +33,7 @@ class Employee(object):
     #     return salary
 
     def current_salary(self):
-        a = self.bonus()
-        return a
+        return self.bonus()
 
 class Developer(Employee):
     def __init__(self, manager, *args):
@@ -43,6 +42,9 @@ class Developer(Employee):
 
     def __repr__(self):
         return "{} {}, manager: {}, experience: {},".format(self.first_name, self.second_name, self.manager, self.experience)
+
+    def current_salary(self):
+        return self.bonus()
 
 class Designer(Employee):
     def __init__(self, eff_coeff, manager, *args):
@@ -66,7 +68,7 @@ class Manager(Employee):
 
     def current_salary(self):
         dev = 0
-        sal = self.salary
+        sal = self.bonus()
         stuff = self.stuff
         if len(stuff) > 10:
             sal = sal + 300
@@ -75,8 +77,11 @@ class Manager(Employee):
         for emp in stuff:
             if emp == "d":
                 dev = dev + 1
-            if dev > 0.5*len(stuff):
-                sal = sal*1.1
+                if dev > 0.5*len(stuff):
+                    sal = sal*1.1
+        print sal
+        print dev
+        print len(stuff)
         return sal
 
 
@@ -93,9 +98,9 @@ class Manager(Employee):
 # print m
 des = Designer(0.9, "manager3", "name", "second name", 1500, 6)
 
-print des.current_salary()
-print des.bonus()
+# print des.current_salary()
+# print des.bonus()
 #
-# mgr = Manager(["s","d","2","4","5","f","d","d","d","d","d","d"], "name", "second name", 1500, 7)
-# print mgr.current_salary()
-# print mgr.bonus()
+mgr = Manager(["s","d","2","4","d","d","d","d","d"], "name", "second name", 1500, 7)
+print mgr.current_salary()
+print mgr.bonus()
