@@ -72,17 +72,18 @@ class Manager(Employee):
         stuff = self.stuff
         if len(stuff) > 10:
             sal = sal + 300
+            print sal
         elif len(stuff) > 5:
             sal = sal + 200
+            print sal
         for emp in stuff:
             if emp == "d":
                 dev = dev + 1
-                if dev > 0.5*len(stuff):
-                    sal = sal*1.1
-        print sal
-        print dev
-        print len(stuff)
-        return sal
+            if dev > 0.5*len(stuff):
+                sal1 = sal*1.1
+            elif dev < 0.5*len(stuff):
+                sal1 = sal
+        return sal1
 
 
 
@@ -101,6 +102,6 @@ des = Designer(0.9, "manager3", "name", "second name", 1500, 6)
 # print des.current_salary()
 # print des.bonus()
 #
-mgr = Manager(["s","d","2","4","d","d","d","d","d"], "name", "second name", 1500, 7)
+mgr = Manager(["s","d","2","4","d","x"], "name", "second name", 1500, 7)
 print mgr.current_salary()
 print mgr.bonus()
