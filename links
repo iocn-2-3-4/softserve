@@ -32,3 +32,16 @@ https://www.digitalocean.com/community/tutorials/a-comparison-of-web-servers-for
 
 https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-uwsgi-and-nginx-on-ubuntu-16-04
 
+
+echo $USER
+echo $WORKSPACE
+#sudo -H -u jenkins bash -c ' sshpass -p kv020DevOps rsync -avz  /var/lib/jenkins/workspace/test/ root@192.168.96.213:/root/TTT/'
+#sshpass -p kv020DevOps rsync -avz  /var/lib/jenkins/workspace/test/ admin@192.168.96.197:/home/admin/adminproject/HelloWorldApp/
+#rsync -avz  /var/lib/jenkins/workspace/test/ root@192.168.96.213:/root/TTT/
+#uwsgi -touch-reload
+#sshpass -p kv020DevOps ssh root@192.168.96.197 service uwsgi restart
+#sshpass -p kv020DevOps ssh root@192.168.96.197 service uwsgi restart
+
+rsync -avz  /var/lib/jenkins/workspace/test/ root@192.168.96.197:/home/admin/adminproject/HelloWorldApp/
+ssh root@192.168.96.197 service uwsgi restart
+
